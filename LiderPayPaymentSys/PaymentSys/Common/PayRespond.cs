@@ -53,13 +53,19 @@
 
                     Dogovor dogovor = mtHelper.GetDogovorByCode(strDogovor);
 
+                    var outnum = prefix + TxnID;
+
+                    if (outnum.Length > 20)
+                        outnum = outnum.Substring(0,20);
+
                     try {
                         mfHelper.PayDogovor(strDogovor,
                                             0,
                                             ConfigurationManager.AppSettings["PaymentSystem"],
                                             Convert.ToDecimal(Sum.Replace(".", ",")),
-                                            prefix + TxnID);
+                                            outnum);
 
+                        Logger.WriteToLog("Pay: Создан новый платеж " + outnum);
                     }
                     catch(Exception ex)
                     {

@@ -80,8 +80,8 @@ public class _Default : Page, IRequiresSessionState
 
 	    this.Sum = this.Sum.Replace(".",",");
 
-        this.lpUser = base.Request.QueryString.Get("user");
-        this.lpPass = base.Request.QueryString.Get("password");
+        this.lpUser =  base.Request.QueryString.Get("user");
+        this.lpPass =  base.Request.QueryString.Get("password");
         if (string.IsNullOrEmpty(this.TxnID))
         {
             this.RespondDefault("Argument 'txn_id' is null");
@@ -94,6 +94,7 @@ public class _Default : Page, IRequiresSessionState
         {
             this.RespondDefault("Argument 'sum' is null");
         }
+        
         else if (string.IsNullOrEmpty(this.lpUser))
         {
             this.RespondDefault("Argument 'user' is null");
@@ -102,6 +103,7 @@ public class _Default : Page, IRequiresSessionState
         {
             this.RespondDefault("Argument 'password' is null");
         }
+        
     }
 
     private void SetPayParam()
@@ -109,8 +111,8 @@ public class _Default : Page, IRequiresSessionState
         this.SetCheckParams();
         this.TxnDate = base.Request.QueryString.Get("txn_date");
         this.PayType = base.Request.QueryString.Get("pay_type");
-        this.lpUser = base.Request.QueryString.Get("user");
-        this.lpPass = base.Request.QueryString.Get("password");
+        this.lpUser =  base.Request.QueryString.Get("user");
+        this.lpPass =  base.Request.QueryString.Get("password");
         if (string.IsNullOrEmpty(this.TxnDate))
         {
             this.RespondDefault("Argument 'txn_date' is null");
@@ -123,6 +125,7 @@ public class _Default : Page, IRequiresSessionState
         {
             this.PayType = "0";
         }
+        
         else if (string.IsNullOrEmpty(this.lpUser))
         {
             this.RespondDefault("Argument 'user' is null");
@@ -131,6 +134,7 @@ public class _Default : Page, IRequiresSessionState
         {
             this.RespondDefault("Argument 'password' is null");
         }
+        
     }
 
     protected HttpApplication ApplicationInstance
