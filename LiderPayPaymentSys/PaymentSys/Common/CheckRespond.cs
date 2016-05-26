@@ -57,6 +57,15 @@
 
                     int toPaySumm = (int)Math.Round(dogovor.Price - dogovor.Payed);
 
+                    Rates rates = new Rates(new Megatec.Common.BusinessRules.Base.DataContainer());
+                    rates.Fill();
+
+                    Logger.WriteToLog("Check: заказ проверен " + Account + " к оплате " + toPaySumm +" "+ dogovor.RateCode);
+
+                    if (dogovor.RateCode != rates.NationalRate.Code)
+                        toPaySumm = (int)Math.Round(RealCourse.Exchange(toPaySumm, dogovor.RateCode, rates.NationalRate.Code, DateTime.Today));
+
+
                     Logger.WriteToLog("Check: заказ проверен " + Account + " к оплате " + toPaySumm + " руб");
 
                     this._feild4 = toPaySumm;
